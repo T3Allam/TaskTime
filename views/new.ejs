@@ -1,0 +1,62 @@
+<% include ./partials/header %>
+
+<body  onload="startTime()">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <span class="navbar-brand"><i class="fas fa-hourglass-end"></i> Time</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a class="nav-link" href="/">Document</a></li>
+                <li><a class="nav-link" href="/activities">Archives</a></li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <% if(!currentUser){ %>
+                    <li><a class="nav-link" href="/login">Login</a></li>
+                    <li><a class="nav-link" href="/register">Sign Up</a></li>
+                <% } else { %>
+                    <li><a class="nav-link">Signed In As <%= currentUser.username %></a></li>
+                    <li><a class="nav-link" href="/logout">Logout</a></li>
+                <% } %>
+            </ul> 
+
+        </div>
+    </nav>
+    
+    <div class="container">
+        <% if (error && error.length>0) {%>
+        <div class="aler alert-danger" role="alert">
+            <%=error%>
+        </div>
+        <% } %>
+        <% if (success && success.length>0) {%>
+        <div class="aler alert-success" role="alert">
+            <%=success%>
+        </div>
+        <% } %>
+    </div>
+    
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1 class="text-center" id="txt">
+            </h1>    
+        </div>
+    </main>
+    
+    <div class="container"> 
+        <form id="formTable" action="/" method="POST">
+                <table id="table">
+                    <th class="headers">Start Time</th>
+                    <th class="headers">End Time</th>
+                    <th class="headers">Time Spent</th>
+                    <th class="headers">Task</th>
+                </table>
+            <br>
+            <input form="formTable" class="btn btn-success" type="submit" value="Save"/>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/timeSched.js"></script>
+
+<% include partials/footer %>

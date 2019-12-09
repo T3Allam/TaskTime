@@ -1,0 +1,21 @@
+<% include ./partials/headerTwo %>
+
+
+<div class="row">
+    <div style="width: 30%; margin: 25px auto;">
+        <form class="form-signin" action="/register" method="post">
+            <h1 style="text-align: center">Sign Up</h1>
+            <input class="form-control" type="text" name="username" placeholder="username">
+            <input class="form-control midform" id="midform" type="password" name="password" placeholder="password">
+            
+            <input class="form-control" type="email" name="email" placeholder="email">
+            
+            <br>
+            <button class="btn btn-lg btn-secondary btn-block">Sign Up!</button>
+        </form>
+        <a href="/">Go Back</a>
+    </div>
+</div>
+
+
+<% include partials/footer %>
